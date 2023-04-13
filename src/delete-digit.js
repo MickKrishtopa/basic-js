@@ -12,7 +12,7 @@ const { NotImplementedError } = require("../extensions/index.js");
  *
  */
 function deleteDigit(num) {
-  // throw new NotImplementedError('Not implemented');
+  // throw new NotImplementedError("Not implemented");
   // remove line with error and write your code here
   if (num === 0) {
     return 0;
@@ -21,23 +21,26 @@ function deleteDigit(num) {
   if (num === undefined) {
     return 0;
   }
+  let res = 0;
+  const arrBasic = Array.from(num.toString());
 
-  const arr = num
-    .toString()
-    .split("")
-    .sort((a, b) => b - a);
+  console.log("начальный массив:", arrBasic);
 
-  arr.splice(arr.length - 1, 1);
+  arrBasic.forEach((char, i) => {
+    const arr = Array.from(num.toString());
+    arr.splice(i, 1);
+    const compareNumber = arr.join("");
+    console.log(compareNumber);
+    if (compareNumber > res) {
+      res = compareNumber;
+    }
+  });
 
-  return Number(arr.join(""));
+  return Number(res);
 }
 
 module.exports = {
   deleteDigit,
 };
 
-console.log(deleteDigit(1100));
-console.log(deleteDigit(1010));
-console.log(deleteDigit(1001));
-console.log(deleteDigit(0011));
-console.log(deleteDigit(0101));
+// console.log(deleteDigit(956936));
